@@ -17,10 +17,12 @@ function main() {
   console.log(`Steps: ${steps}, increment: ${dt}`);
 
   nbody_js.init();
+  nbody_js.bench(10, dt); // warmup
   const [energy1, elapsed1] = measureTime(() => nbody_js.bench(steps, dt));
   console.log(`    JavaScript: Elapsed: ${elapsed1.toFixed(3)} sec, Energy: ${energy1.toFixed(17)}`);
 
   nbody_as.init();
+  nbody_as.bench(10, dt); // warmup
   const [energy2, elapsed2] = measureTime(() => nbody_as.bench(steps, dt));
   console.log(`AssemblyScript: Elapsed: ${elapsed2.toFixed(3)} sec, Energy: ${energy2.toFixed(17)}`);
 }
