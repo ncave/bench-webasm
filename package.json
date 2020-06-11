@@ -8,8 +8,9 @@
     "asbuild:optimized": "asc assembly/nbody_as.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap -O3 --noAssert",
     "asbuild:noruntime": "asc assembly/nbody_as.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap -O3 --noAssert --runtime none",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "rsbuild": "cd rust && cargo +nightly build --release",
     "tsbuild": "npm run tsc -- -p tests --outDir build",
-    "pretest": "npm run asbuild && npm run tsbuild",
+    "pretest": "npm run asbuild && npm run rsbuild && npm run tsbuild",
     "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/test",
     "tsc": "tsc"
   },

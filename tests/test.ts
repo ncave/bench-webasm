@@ -1,6 +1,7 @@
 import * as process from "process";
 import * as nbody_js from "./nbody_js";
-const nbody_as = require("..");
+const nbody_as = require("../assembly");
+const nbody_rs = require("../rust");
 
 function measureTime<T>(f: () => T) {
   const start = process.hrtime();
@@ -25,6 +26,11 @@ function main() {
   nbody_as.bench(10, dt); // warmup
   const [energy2, elapsed2] = measureTime(() => nbody_as.bench(steps, dt));
   console.log(`AssemblyScript: Elapsed: ${elapsed2.toFixed(3)} sec, Energy: ${energy2.toFixed(17)}`);
+
+  nbody_rs.init();
+  nbody_rs.bench(10, dt); // warmup
+  const [energy3, elapsed3] = measureTime(() => nbody_rs.bench(steps, dt));
+  console.log(`Rust to webasm: Elapsed: ${elapsed3.toFixed(3)} sec, Energy: ${energy3.toFixed(17)}`);
 }
 
 main();
