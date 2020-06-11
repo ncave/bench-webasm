@@ -1,7 +1,7 @@
 // From The Computer Language Benchmarks Game
 // http://benchmarksgame.alioth.debian.org
 
-type float = f32; // interchangeable f32/f64 for testing
+type float = f64; // interchangeable f32/f64 for testing
 // type float = number;
 // type i32 = number;
 // type u32 = number;
