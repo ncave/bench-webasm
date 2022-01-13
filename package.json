@@ -1,34 +1,25 @@
 {
-  "name": "webasm-bench",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "_type": "module",
   "scripts": {
-    "asbuild:default": "asc assembly/nbody_as.ts -b build/default.wasm -t build/default.wat --sourceMap -O3 --noAssert",
-    "asbuild:minimal": "asc assembly/nbody_as.ts -b build/minimal.wasm -t build/minimal.wat --sourceMap -O3 --noAssert --runtime minimal",
-    "asbuild:stub": "asc assembly/nbody_as.ts -b build/stub.wasm -t build/stub.wat --sourceMap -O3 --noAssert --runtime stub",
-    "asbuild": "npm run asbuild:default && npm run asbuild:minimal && npm run asbuild:stub",
-    "rsbuild": "cd rust && cargo +nightly build --release",
-    "tsbuild": "tsc -p tests --outDir build",
-    "pretest": "npm run asbuild && npm run rsbuild && npm run tsbuild",
-    "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/test"
+    "build-as:default": "asc AssemblyScript/src/nbody_as.ts -b build/default.wasm -t build/default.wat --sourceMap -O3 --noAssert",
+    "build-as:minimal": "asc AssemblyScript/src/nbody_as.ts -b build/minimal.wasm -t build/minimal.wat --sourceMap -O3 --noAssert --runtime minimal",
+    "build-as:stub": "asc AssemblyScript/src/nbody_as.ts -b build/stub.wasm -t build/stub.wat --sourceMap -O3 --noAssert --runtime stub",
+    "build-as": "npm run build-as:default && npm run build-as:minimal && npm run build-as:stub",
+    "build-rs": "cd Rust && wasm-pack build --target nodejs",
+    "build-rs_": "cd Rust && cargo build --release --target wasm32-unknown-unknown",
+    "build-fs": "cd FSharp && wasm-pack build --target nodejs",
+    "build-ts": "tsc -p tests --outDir build",
+    "build": "npm run build-as && npm run build-rs && npm run build-fs && npm run build-ts",
+    "clean": "git clean -fdX",
+    "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/tests/test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ncave/webasm-bench.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ncave/webasm-bench/issues"
-  },
-  "homepage": "https://github.com/ncave/webasm-bench#readme",
   "dependencies": {
-    "@assemblyscript/loader": "^0.19.16"
+    "@assemblyscript/loader": "^0.19.20"
   },
   "devDependencies": {
-    "@types/node": "^16.9.1",
-    "assemblyscript": "^0.19.16",
-    "typescript": "^4.4.3"
+    "@types/node": "^17.0.8",
+    "assemblyscript": "^0.19.22",
+    "typescript": "^4.5.4"
   }
 }

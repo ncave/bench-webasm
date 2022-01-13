@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "fable-py": {
+      "version": "4.0.0-alpha-015",
+      "commands": [
+        "fable-py"
+      ]
+    },
+    "fable": {
+      "version": "3.6.2",
+      "commands": [
+        "fable"
+      ]
+    }
+  }
+}

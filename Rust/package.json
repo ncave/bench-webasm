@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-wasm": "wasm-pack build --target nodejs",
+    "test-rust": "cargo run --release"
+  }
+}
