@@ -2,7 +2,7 @@ import * as process from "process";
 import * as nbody_ts from "../TypeScript/src/nbody_ts";
 const nbody_as = require("../../AssemblyScript");
 const nbody_rs = require("../../Rust/pkg");
-const nbody_fs = require("../../FSharp/pkg");
+const nbody_fs = require("../../Fable/out/pkg");
 
 function measureTime<T>(f: () => T) {
   const start = process.hrtime();
@@ -14,7 +14,7 @@ function measureTime<T>(f: () => T) {
 
 function main() {
   const dt = 0.01;
-  const steps = 20_000_000;
+  const steps = 50_000_000;
 
   console.log(`NBody steps: ${steps}, increment: ${dt}`);
 

@@ -133,6 +133,7 @@ let offset_momentum (bodies: Planet[]) =
 
 let init (bodies: Planet[]) =
     offset_momentum (bodies)
+    energy (bodies)
 
 let step (bodies: Planet[]) =
     advance (bodies, 0.01)

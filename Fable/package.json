@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-cli": "dotnet run -c Release --project ../../Fable/src/Fable.Cli -- NBody.fsproj --outDir out",
+    "build-rust": "dotnet fable NBody.fsproj --outDir out --lang Rust && cp Cargo.toml out",
+    "build-wasm": "npm run build-rust && cd out && wasm-pack build --target nodejs",
+    "build-js": "dotnet fable fable-test.fsproj --outDir out",
+    "test-js": "npm run build-js && node out/src/main.js",
+    "test-rust": "npm run build-rust && cd out && cargo run --release",
+    "test-wasm": "npm run build-wasm && node src/test_wasm.js",
+    "test-dotnet": "dotnet run -c Release"
+  }
+}

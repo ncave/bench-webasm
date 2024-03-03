@@ -136,9 +136,10 @@ thread_local! {
   static BODIES: [Planet; N_BODIES] = [Sun, Jupiter, Saturn, Uranus, Neptune];
 }
 
-pub fn init() {
+pub fn init() -> f64 {
   BODIES.with(|bodies| {
-    offset_momentum(bodies)
+    offset_momentum(bodies);
+    energy(bodies)
   })
 }
 
