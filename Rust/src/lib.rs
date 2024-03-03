@@ -3,7 +3,7 @@ mod nbody;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn init() {
+pub fn init() -> f64 {
   nbody::init()
 }
 

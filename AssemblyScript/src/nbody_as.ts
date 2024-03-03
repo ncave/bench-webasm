@@ -186,16 +186,15 @@ class NBodySystem {
   }
 }
 
-var system: NBodySystem;
+export const system = new NBodySystem([
+  Sun(),
+  Jupiter(),
+  Saturn(),
+  Uranus(),
+  Neptune()
+]);
 
 export function init(): void {
-  system = new NBodySystem([
-    Sun(),
-    Jupiter(),
-    Saturn(),
-    Uranus(),
-    Neptune()
-  ]);
 }
 
 export function step(): float {

@@ -5,7 +5,7 @@ edition = "2021"
 
 [lib]
 name = "fable_nbody"
-path = "src/lib.rs"
+path = "src/main.rs"
 crate-type = ["cdylib"]
 
 [[bin]]
@@ -13,9 +13,12 @@ name = "fable_nbody"
 path = "src/main.rs"
 
 [dependencies]
-fable_library_rust = { path = "../../Fable/build/fable-library-rust" }
+fable_library_rust = { path = "./fable_modules/fable-library-rust", default-features = false }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
 wasm-bindgen = "0.2"
 
 [profile.release]
+codegen-units = 1
 lto = true
-opt-level = 3
+#opt-level = 3

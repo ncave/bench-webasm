@@ -2,24 +2,24 @@
   "private": true,
   "_type": "module",
   "scripts": {
-    "build-as:default": "asc AssemblyScript/src/nbody_as.ts -b build/default.wasm -t build/default.wat --sourceMap -O3 --noAssert",
-    "build-as:minimal": "asc AssemblyScript/src/nbody_as.ts -b build/minimal.wasm -t build/minimal.wat --sourceMap -O3 --noAssert --runtime minimal",
-    "build-as:stub": "asc AssemblyScript/src/nbody_as.ts -b build/stub.wasm -t build/stub.wat --sourceMap -O3 --noAssert --runtime stub",
+    "build-as:default": "asc AssemblyScript/src/nbody_as.ts -o build/default.wasm -t build/default.wat --sourceMap -O3 --noAssert",
+    "build-as:minimal": "asc AssemblyScript/src/nbody_as.ts -o build/minimal.wasm -t build/minimal.wat --sourceMap -O3 --noAssert --runtime minimal",
+    "build-as:stub": "asc AssemblyScript/src/nbody_as.ts -o build/stub.wasm -t build/stub.wat --sourceMap -O3 --noAssert --runtime stub",
     "build-as": "npm run build-as:default && npm run build-as:minimal && npm run build-as:stub",
     "build-rs": "cd Rust && wasm-pack build --target nodejs",
     "build-rs_": "cd Rust && cargo build --release --target wasm32-unknown-unknown",
-    "build-fs": "cd FSharp && wasm-pack build --target nodejs",
+    "build-fs": "cd Fable && npm run build-wasm",
     "build-ts": "tsc -p tests --outDir build",
     "build": "npm run build-as && npm run build-rs && npm run build-fs && npm run build-ts",
     "clean": "git clean -fdX",
     "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/tests/test"
   },
   "dependencies": {
-    "@assemblyscript/loader": "^0.19.20"
+    "@assemblyscript/loader": "^0.27.24"
   },
   "devDependencies": {
-    "@types/node": "^17.0.8",
-    "assemblyscript": "^0.19.22",
-    "typescript": "^4.5.4"
+    "@types/node": "^20.11.19",
+    "assemblyscript": "^0.27.24",
+    "typescript": "^5.3.3"
   }
 }

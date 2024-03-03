@@ -2,17 +2,18 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="src/Platform.fs" />
     <Compile Include="src/NBody.fs" />
+    <Compile Include="src/lib.fs" />
     <Compile Include="src/main.fs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fable.Core" Version="3.6.1" />
+    <PackageReference Include="Fable.Core" Version="4.2.0" />
   </ItemGroup>
 
 </Project>
