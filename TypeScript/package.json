@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-native": "shermes ./src/main.ts -o ./bin/nbody",
+    "test-native": "./bin/nbody"
+  }
+}

@@ -12,14 +12,15 @@
     "build-ts": "tsc -p tests --outDir build",
     "build": "npm run build-as && npm run build-rs && npm run build-fs && npm run build-ts",
     "clean": "git clean -fdX",
+    "test-node": "tsc -p ./TypeScript/src --outDir ./TypeScript/build && node ./TypeScript/build/main.js",
     "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/tests/test"
   },
   "dependencies": {
-    "@assemblyscript/loader": "^0.27.24"
+    "@assemblyscript/loader": "^0.27.27"
   },
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "assemblyscript": "^0.27.24",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.12.7",
+    "assemblyscript": "^0.27.27",
+    "typescript": "^5.4.5"
   }
 }
