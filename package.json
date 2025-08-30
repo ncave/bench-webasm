@@ -16,11 +16,11 @@
     "test": "node --no-wasm-bounds-checks --no-wasm-stack-checks --expose-gc build/tests/test"
   },
   "dependencies": {
-    "@assemblyscript/loader": "^0.27.27"
+    "@assemblyscript/loader": "^0.27.36"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
-    "assemblyscript": "^0.27.27",
-    "typescript": "^5.4.5"
+    "@types/node": "^22.15.3",
+    "assemblyscript": "^0.27.36",
+    "typescript": "^5.8.3"
   }
 }
